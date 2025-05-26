@@ -17,7 +17,7 @@ import RAJESH from "../assets/Alumini/management/RAJESH PATIL.png";
 import SANDIP from "../assets/Alumini/management/SANDIP BODAGE.png";
 import YUVRAJ from "../assets/Alumini/management/YUVRAJ ARUN.png";
 import RATNAKANT from "../assets/Alumini/management/Ratnakant Vaidya.png";
-import MAHESH from "../assets/Alumini/management/MAHESH GAWANDE.png";
+import MAHESH from "../assets/Alumini/management/Mahesh Gawande.png"
 import HARSHAL from "../assets/Alumini/management/HARSHAL AUTE.png";
 import AKASHSHESHRAO from "../assets/Alumini/management/Akash Sheshrao.png";
 
