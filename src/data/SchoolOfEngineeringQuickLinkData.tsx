@@ -1,6 +1,7 @@
-import nptelAcknowledgmentLetter from "../assets/images/nptelAcknowledgmentLetter.png"
+import nptelAcknowledgmentLetter from "../assets/images/nptelAcknowledgmentLetter.png";
 import AlumniPage from "../pages/AlumniPage";
 import Placement from "../pages/schoolOfEngineering/SchoolOfEngineeringPlacement";
+import PrincipelLaxmanEngineer from "../assets/principalImages/PrincipelLaxmanEngineer.jpg"
 
 export interface ProfileData {
   id: string;
@@ -9,7 +10,6 @@ export interface ProfileData {
   image: string;
   content: string;
 }
-
 
 export interface SectionContent {
   title: string;
@@ -35,22 +35,22 @@ export const navItems = [
   { label: "NIRF", id: "nirf" },
   { label: "Mandatory Disclosure", id: "mandatory-disclosure" },
   { label: "IQAC", id: "iqac" },
+  { label: "Innovation & Incubation Centre", id: "innovationIncubation" },
   { label: "SWAYAM-NPTEL", id: "swayam-nptel" },
-  { label: "Vision & Mission", id: "vision-mission" }
+  { label: "Vision & Mission", id: "vision-mission" },
 ];
 
 export const profiles: ProfileData[] = [
   {
     id: "principal",
-    name: "Principal",
+    name: "Prof. Laxman M Waghmare",
     title: "Principal",
-    image: "https://static.vecteezy.com/system/resources/thumbnails/029/271/062/small_2x/avatar-profile-icon-in-flat-style-male-user-profile-illustration-on-isolated-background-man-profile-sign-business-concept-vector.jpg",
+    image: PrincipelLaxmanEngineer,
     content: `
 
  
-`
-  }
-
+`,
+  },
 ];
 
 export const departments: Department[] = [
@@ -58,7 +58,8 @@ export const departments: Department[] = [
     id: "cse",
     name: "Computer Science & Engineering",
     shortName: "CSE",
-    description: "The CSE department focuses on cutting-edge technologies including AI, Machine Learning, Cybersecurity, and IoT with state-of-the-art computing facilities.",
+    description:
+      "The CSE department focuses on cutting-edge technologies including AI, Machine Learning, Cybersecurity, and IoT with state-of-the-art computing facilities.",
     image: "https://aitsrajampet.ac.in/images/artificial-intelligence.jpg ",
     establishedYear: 2009,
     hod: "Dr. Rajesh Kumar",
@@ -67,21 +68,22 @@ export const departments: Department[] = [
       "Industry-aligned curriculum",
       "100% placement record",
       "Hackathons and coding competitions",
-      "Cisco Networking Academy"
+      "Cisco Networking Academy",
     ],
     labs: [
       "Artificial Intelligence Lab",
       "Cybersecurity Lab",
       "IoT Development Center",
       "High Performance Computing Lab",
-      "Data Science Lab"
-    ]
+      "Data Science Lab",
+    ],
   },
   {
     id: "mech",
     name: "Mechanical Engineering",
     shortName: "ME",
-    description: "The ME department provides comprehensive training in design, thermal, and production engineering with advanced CAD/CAM and robotics facilities.",
+    description:
+      "The ME department provides comprehensive training in design, thermal, and production engineering with advanced CAD/CAM and robotics facilities.",
     image: "https://www.cepathanapuram.ac.in/assets/images/mephoto5.jpg ",
     establishedYear: 2009,
     hod: "Dr. Vikram Joshi",
@@ -90,22 +92,24 @@ export const departments: Department[] = [
       "Automation and Robotics focus",
       "SAE Collegiate Club",
       "Additive Manufacturing Center",
-      "Collaboration with Siemens"
+      "Collaboration with Siemens",
     ],
     labs: [
       "CAD/CAM Center",
       "Robotics and Automation Lab",
       "Thermal Engineering Lab",
       "Fluid Mechanics Lab",
-      "Material Testing Lab"
-    ]
+      "Material Testing Lab",
+    ],
   },
   {
     id: "eee",
     name: "Electrical Engineering",
     shortName: "EEE",
-    description: "The EEE department specializes in power systems, renewable energy, and smart grid technologies with modern electrical labs and industry partnerships.",
-    image: "https://webfiles.amrita.edu/2019/12/Teywkhaq-about-electrical-and-electronics.jpg ",
+    description:
+      "The EEE department specializes in power systems, renewable energy, and smart grid technologies with modern electrical labs and industry partnerships.",
+    image:
+      "https://webfiles.amrita.edu/2019/12/Teywkhaq-about-electrical-and-electronics.jpg ",
     establishedYear: 2011,
     hod: "Prof. Anjali Deshmukh",
     highlights: [
@@ -113,16 +117,16 @@ export const departments: Department[] = [
       "Renewable Energy Research",
       "PLC and SCADA Training",
       "Power Electronics Lab",
-      "Industry collaboration with Siemens"
+      "Industry collaboration with Siemens",
     ],
     labs: [
       "Power Systems Lab",
       "Electrical Machines Lab",
       "Control Systems Lab",
       "Renewable Energy Lab",
-      "Measurement and Instrumentation Lab"
-    ]
-  }
+      "Measurement and Instrumentation Lab",
+    ],
+  },
 ];
 
 export const placementData: SectionContent = {
@@ -130,13 +134,12 @@ export const placementData: SectionContent = {
   content: <Placement />,
 };
 
-
 export const achievementData = {
   title: "Institutional Achievements",
   content: `
 
 
-`
+`,
 };
 
 export const nirfData = {
@@ -144,7 +147,7 @@ export const nirfData = {
   content: `
 
 
-`
+`,
 };
 
 export const mandatoryDisclosureData = {
@@ -152,17 +155,42 @@ export const mandatoryDisclosureData = {
   content: `
 
   
-  `
+  `,
 };
 const iqacCommitteeData = [
-  { post: "Chairperson (Head of the Institution)", member: "Dr. L.M. Waghmare, Principal, MPGISOEN" },
+  {
+    post: "Chairperson (Head of the Institution)",
+    member: "Dr. L.M. Waghmare, Principal, MPGISOEN",
+  },
   { post: "Senior Administrative Officers", member: "Mr. P.J. Kinikar" },
-  { post: "Teacher Coordinators", member: "1. Mr. B.A. Khansole, 2. Mr. Hashmi S.A, 3. Dr. Syeda Rukhsana, 4. Mr. Syed Shafiq R., 5. Mr. Rathod L.V., 6. Dr. Abdullah M.K, 7. Mr. Sadanand Shinde" },
-  { post: "Member from the Management", member: "Hon. Mr. Venkat V. Chari (Secretary of MPGIN), Hon. Mr. Arvind S. Patil (Managing Director MPGIN)" },
-  { post: "Nominees from Alumni", member: "1. Mr. Pravin Jadhav, 2. Mr. Mayur Chavan" },
-  { post: "Nominees from Student Council Member", member: "1. Mr. Vedant A.U., 2. Mr. Jeevan Rathod, 3. Mr. Aditya Bhagat, 4. Mr. Nikhil Paikrao" },
-  { post: "Nominees from Employers Industrialists/stakeholders (External members)", member: "1. Dr. A.B. Gonde, Dean (Academics), SGGS IE&TN, Nanded, 2. Mr. Millar Khandare (CEO 3idea Company), 3. Mr. Tayyab Aalam (Parent representative)" },
-  { post: "Coordinator/Head of the IQAC", member: "Mr. S. Asad Hashmi (HOD, EED, MPGISEN)" }
+  {
+    post: "Teacher Coordinators",
+    member:
+      "1. Mr. B.A. Khansole, 2. Mr. Hashmi S.A, 3. Dr. Syeda Rukhsana, 4. Mr. Syed Shafiq R., 5. Mr. Rathod L.V., 6. Dr. Abdullah M.K, 7. Mr. Sadanand Shinde",
+  },
+  {
+    post: "Member from the Management",
+    member:
+      "Hon. Mr. Venkat V. Chari (Secretary of MPGIN), Hon. Mr. Arvind S. Patil (Managing Director MPGIN)",
+  },
+  {
+    post: "Nominees from Alumni",
+    member: "1. Mr. Pravin Jadhav, 2. Mr. Mayur Chavan",
+  },
+  {
+    post: "Nominees from Student Council Member",
+    member:
+      "1. Mr. Vedant A.U., 2. Mr. Jeevan Rathod, 3. Mr. Aditya Bhagat, 4. Mr. Nikhil Paikrao",
+  },
+  {
+    post: "Nominees from Employers Industrialists/stakeholders (External members)",
+    member:
+      "1. Dr. A.B. Gonde, Dean (Academics), SGGS IE&TN, Nanded, 2. Mr. Millar Khandare (CEO 3idea Company), 3. Mr. Tayyab Aalam (Parent representative)",
+  },
+  {
+    post: "Coordinator/Head of the IQAC",
+    member: "Mr. S. Asad Hashmi (HOD, EED, MPGISEN)",
+  },
 ];
 
 export const iqacData = {
@@ -218,14 +246,86 @@ f) Build an organized methodology of documentation and internal communication.
 ## Composition of Internal Quality Assurance Cell (IQAC)
 The institution has established an Internal Quality Assurance Cell (IQAC) on 25.08.2016. The institutional policy with regard to quality assurance is to develop and maintain the quality sustenance activities organized in the institute and maintaining the quality in overall development of the institute.
 
-### Revised IQAC Committee
+## Revised IQAC Committee
 `,
-  tableData: iqacCommitteeData
+  tableData: iqacCommitteeData,
 };
 
+export const innovationIncubation = {
+  title: "Innovation & Incubation Centre",
+  content: `
 
-
-
+The Innovation & Incubation Centre aims to foster creativity, entrepreneurship, and technological advancement by supporting innovative ideas and nurturing startups within the institution.
+  `,
+  tableData: [
+    {
+      srNo: 1,
+      name: "Mr. Shaikh Ajij Amirsab",
+      designation: "Assistant Professor",
+      role: "Lab In-charge",
+    },
+    {
+      srNo: 2,
+      name: "Mr. P.D. Pople",
+      designation: "I.P.O & HoD (Civil)",
+      role: "Faculty Coordinator",
+    },
+    {
+      srNo: 3,
+      name: "Mr. A.M. Shirse",
+      designation: "Assistant Professor",
+      role: "Faculty Coordinator",
+    },
+    {
+      srNo: 4,
+      name: "Mr. Devrao Bokare",
+      designation: "Student",
+      role: "Technical Team Leader",
+    },
+    {
+      srNo: 5,
+      name: "Mr. Amol Jadhav",
+      designation: "Student",
+      role: "Project Guide",
+    },
+    {
+      srNo: 6,
+      name: "Mr. Ajinkya Kadam",
+      designation: "Student",
+      role: "Technical Expert",
+    },
+    {
+      srNo: 7,
+      name: "Mr. Vaishnav Panchal",
+      designation: "Student",
+      role: "Student Coordinator",
+    },
+    {
+      srNo: 8,
+      name: "Mr. Pranav Birhade",
+      designation: "Student",
+      role: "Student Coordinator",
+    },
+    {
+      srNo: 9,
+      name: "Mr. Aakash Maske",
+      designation: "Student",
+      role: "Students Coordinator",
+    },
+    {
+      srNo: 10,
+      name: "Mr. Sanket Rathod",
+      designation: "Student",
+      role: "Students Coordinator",
+    },
+    {
+      srNo: 11,
+      name: "Mr. Praful Jadhav",
+      designation: "Student",
+      role: "Students Coordinator",
+    },
+  ],
+};
 
 export const swayamNptelData = {
   title: "NPTEL (National Programme on Technology Enhanced Learning)",
@@ -248,16 +348,50 @@ College Id: 6841
 ## NPTEL TOTAL REGISTRATIONS 2024-25
 `,
   tableData: [
-    { srNo: 1, departmentName: "Civil Engineering", noOfRegistrations: 56, totalRegistrations: 263 },
-    { srNo: 2, departmentName: "Computer Science & Engineering", noOfRegistrations: 125, totalRegistrations: 263 },
-    { srNo: 3, departmentName: "Electrical Engineering", noOfRegistrations: 59, totalRegistrations: 263 },
-    { srNo: 4, departmentName: "Electronics & Tele-Communication Engineering", noOfRegistrations: 3, totalRegistrations: 263 },
-    { srNo: 5, departmentName: "Mechanical Engineering", noOfRegistrations: 6, totalRegistrations: 263 },
-    { srNo: 6, departmentName: "AIML & AIDS", noOfRegistrations: 12, totalRegistrations: 263 },
-    { srNo: 7, departmentName: "First Year", noOfRegistrations: 2, totalRegistrations: 263 }
-  ]
+    {
+      srNo: 1,
+      departmentName: "Civil Engineering",
+      noOfRegistrations: 56,
+      totalRegistrations: 263,
+    },
+    {
+      srNo: 2,
+      departmentName: "Computer Science & Engineering",
+      noOfRegistrations: 125,
+      totalRegistrations: 263,
+    },
+    {
+      srNo: 3,
+      departmentName: "Electrical Engineering",
+      noOfRegistrations: 59,
+      totalRegistrations: 263,
+    },
+    {
+      srNo: 4,
+      departmentName: "Electronics & Tele-Communication Engineering",
+      noOfRegistrations: 3,
+      totalRegistrations: 263,
+    },
+    {
+      srNo: 5,
+      departmentName: "Mechanical Engineering",
+      noOfRegistrations: 6,
+      totalRegistrations: 263,
+    },
+    {
+      srNo: 6,
+      departmentName: "AIML & AIDS",
+      noOfRegistrations: 12,
+      totalRegistrations: 263,
+    },
+    {
+      srNo: 7,
+      departmentName: "First Year",
+      noOfRegistrations: 2,
+      totalRegistrations: 263,
+    },
+  ],
 };
-
 
 export const visionMissionData = {
   title: "Vision & Mission",
@@ -265,5 +399,5 @@ export const visionMissionData = {
   
 
   
-`
+`,
 };

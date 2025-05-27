@@ -108,8 +108,8 @@ export const NAV_ITEMS = [
   {
     name: "Alumni",
     subItems: [
-      { name: "Alumni Registration", path: "/alumni/registration" },
-      { name: "Alumni Speaks", path: "/alumni/speaks" },
+      // { name: "Alumni Registration", path: "/alumni/registration" },
+      // { name: "Alumni Speaks", path: "/alumni/speaks" },
       { name: "Esteemed Alumni", path: "/esteemed-alumni" },
     ],
   },

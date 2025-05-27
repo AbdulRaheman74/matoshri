@@ -1,5 +1,5 @@
 import PresidentImg from "../assets/mpgi/President Jayshree Kamaji Pawar.jpg"
-
+import arvindPatilImg from "../assets/mpgi/Arvind Patil.jpg"
 export interface ProfileData {
   id: string;
   name: string;
@@ -184,7 +184,7 @@ Our administrative team of 150+ professionals ensures smooth functioning of all 
     id: "managing-director",
     name: "Mr. Arvind Patil",
     title: "Managing Director",
-    image: "https://static.vecteezy.com/system/resources/thumbnails/029/271/062/small_2x/avatar-profile-icon-in-flat-style-male-user-profile-illustration-on-isolated-background-man-profile-sign-business-concept-vector.jpg",
+    image: arvindPatilImg,
     content: `From, Managing Director's Desk
 
 Dear Students, Faculty, Staff, and Parents,

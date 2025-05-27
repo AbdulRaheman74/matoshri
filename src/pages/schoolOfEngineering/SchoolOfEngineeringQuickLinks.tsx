@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import NotificationComponent from "../../components/NotificationComponent";
 import {
   achievementData,
@@ -11,8 +11,13 @@ import {
   mandatoryDisclosureData,
   iqacData,
   visionMissionData,
-  swayamNptelData
-} from '../../data/SchoolOfEngineeringQuickLinkData';
+  swayamNptelData,
+  innovationIncubation,
+} from "../../data/SchoolOfEngineeringQuickLinkData";
+import lab1 from "../../assets/engineering/lab1.jpg"
+import lab2 from "../../assets/engineering/lab2.jpg"
+import lab3 from "../../assets/engineering/lab3.jpg"
+import lab4 from "../../assets/engineering/lab4.jpg"
 
 const renderTable = (data) => {
   return (
@@ -20,8 +25,12 @@ const renderTable = (data) => {
       <table className="min-w-full divide-y divide-gray-200 border border-gray-300">
         <thead>
           <tr>
-            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">Particulars of the post</th>
-            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">Name of the Member</th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Particulars of the post
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Name of the Member
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -43,19 +52,33 @@ const renderNptelTable = (data) => {
       <table className="min-w-full divide-y divide-gray-200 border border-gray-300">
         <thead>
           <tr>
-            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">Sr No</th>
-            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">Department Name</th>
-            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">No Of Registrations</th>
-            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">Total Registrations</th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Sr No
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Department Name
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              No Of Registrations
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Total Registrations
+            </th>
           </tr>
         </thead>
         <tbody>
           {data.map((row, index) => (
             <tr key={index}>
               <td className="px-4 py-2 border border-gray-300">{row.srNo}</td>
-              <td className="px-4 py-2 border border-gray-300">{row.departmentName}</td>
-              <td className="px-4 py-2 border border-gray-300">{row.noOfRegistrations}</td>
-              <td className="px-4 py-2 border border-gray-300">{row.totalRegistrations}</td>
+              <td className="px-4 py-2 border border-gray-300">
+                {row.departmentName}
+              </td>
+              <td className="px-4 py-2 border border-gray-300">
+                {row.noOfRegistrations}
+              </td>
+              <td className="px-4 py-2 border border-gray-300">
+                {row.totalRegistrations}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -64,60 +87,159 @@ const renderNptelTable = (data) => {
   );
 };
 
-const renderContent = (content: string, tableData: Array<{ srNo: number, departmentName: string, noOfRegistrations: number, totalRegistrations: number }> = [], iqacTableData: Array<{ post: string, member: string }> = []) => {
-  const paragraphs = content.split('\n');
+const renderImage = (imageSrc: string, altText: string) => (
+  <div className="my-4 flex justify-center">
+    <img
+      src={imageSrc}
+      alt={altText}
+      className="max-w-full h-auto rounded shadow"
+    />
+  </div>
+);
+
+// List renderer for bullet points starting with '-'
+const renderList = (listContent: string) => {
+  const items = listContent
+    .slice(1)
+    .split(", ")
+    .map((item) => item.trim());
+  return (
+    <ul className="list-disc pl-6 space-y-1 text-gray-700 font-semibold my-4">
+      {items.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  );
+};
+
+const renderContent = (
+  content: string,
+  tableData: Array<Record<string, any>> = [],
+  iqacTableData: Array<{ post: string; member: string }> = []
+) => {
+  const paragraphs = content.split("\n");
 
   return (
     <>
       {paragraphs.map((paragraph, index) => {
-        if (paragraph.startsWith('![')) {
-          // Handle image markdown syntax
-          const imageAlt = paragraph.match(/!\[(.*?)\]/)?.[1] || '';
-          const imageSrc = paragraph.match(/\((.*?)\)/)?.[1] || '';
+        if (!paragraph.trim()) return null;
+
+        // Handle image syntax
+        if (paragraph.startsWith("![")) {
+          const imageAlt = paragraph.match(/!\[(.*?)\]/)?.[1] || "";
+          const imageSrc = paragraph.match(/\((.*?)\)/)?.[1] || "";
+          return renderImage(imageSrc, imageAlt);
+        }
+
+        // Handle lists
+        if (paragraph.startsWith("-")) {
+          return renderList(paragraph);
+        }
+
+        // Handle headings
+        if (paragraph.startsWith("## ")) {
           return (
-            <div key={index} className="my-4">
-              <img src={imageSrc} alt={imageAlt} className="w-full h-auto" />
-            </div>
-          );
-        } else if (paragraph.startsWith('-')) {
-          // Handle lists
-          return (
-            <ul key={index} className="list-disc pl-6 space-y-1 text-gray-700 font-semibold">
-              {paragraph.slice(1).split(', ').map((item, i) => (
-                <li key={i}>{item.trim()}</li>
-              ))}
-            </ul>
-          );
-        } else if (paragraph.startsWith('## ') || paragraph.startsWith('### ')) {
-          // Handle subheadings
-          return (
-            <h3 key={index} className="text-xl font-bold text-mpgin-darkBlue mt-4 mb-2">{paragraph.slice(3)}</h3>
-          );
-        } else if (paragraph.startsWith('# ')) {
-          // Handle main headings
-          return (
-            <h2 key={index} className="text-2xl font-bold text-mpgin-darkBlue mt-6 mb-3 border-b pb-2 border-gray-300">{paragraph.slice(2)}</h2>
-          );
-        } else if ((paragraph.startsWith('**') && paragraph.endsWith('**')) || (paragraph.startsWith('*') && paragraph.endsWith('*'))) {
-          // Handle bold text
-          return (
-            <p key={index} className="font-bold text-gray-800">{paragraph.slice(1, -1)}</p>
-          );
-        } else {
-          // Handle regular paragraphs
-          return (
-            <p key={index} className="text-gray-700">{paragraph}</p>
+            <h3
+              key={index}
+              className="text-xl font-bold text-mpgin-darkBlue mt-6 mb-2"
+            >
+              {paragraph.slice(3)}
+            </h3>
           );
         }
+        if (paragraph.startsWith("# ")) {
+          return (
+            <h2
+              key={index}
+              className="text-2xl font-bold text-mpgin-darkBlue mt-8 mb-4 border-b pb-2 border-gray-300"
+            >
+              {paragraph.slice(2)}
+            </h2>
+          );
+        }
+
+        // Handle bold
+        if (
+          (paragraph.startsWith("") && paragraph.endsWith("")) ||
+          (paragraph.startsWith("") && paragraph.endsWith(""))
+        ) {
+          return (
+            <p key={index} className=" text-gray-800 my-2">
+              {paragraph}
+            </p>
+          );
+        }
+
+        // Regular paragraph
+        return (
+          <p key={index} className="text-gray-700 leading-relaxed my-2">
+            {paragraph}
+          </p>
+        );
       })}
-      {tableData.length > 0 && renderNptelTable(tableData)}
+
+      {/* Render Tables */}
+      {tableData.length > 0 && renderTable(tableData)}
       {iqacTableData.length > 0 && renderTable(iqacTableData)}
     </>
   );
 };
 
+const ImageGrid = ({ images }: { images: string[] }) => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+      {images.slice(0,4).map((src, idx) => (
+        <div key={idx} className="rounded overflow-hidden shadow">
+          <img
+            src={src}
+            alt={`Gallery ${idx + 1}`}
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const renderInnovationTable = (data) => {
+  return (
+    <div className="overflow-x-auto mb-4">
+      <table className="min-w-full divide-y divide-gray-200 border border-gray-300">
+        <thead>
+          <tr>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Sr No
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Name
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Designation
+            </th>
+            <th className="px-4 py-2 border border-gray-300 bg-gray-100 font-bold">
+              Role
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row, index) => (
+            <tr key={index}>
+              <td className="px-4 py-2 border border-gray-300">{row.srNo}</td>
+              <td className="px-4 py-2 border border-gray-300">{row.name}</td>
+              <td className="px-4 py-2 border border-gray-300">
+                {row.designation}
+              </td>
+              <td className="px-4 py-2 border border-gray-300">{row.role}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 const SchoolOfEngineeringQuickLinks = () => {
-  const [activeId, setActiveId] = useState('principal');
+  const [activeId, setActiveId] = useState("principal");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -134,24 +256,24 @@ const SchoolOfEngineeringQuickLinks = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Handle ESC key
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsSidebarOpen(false);
+      if (e.key === "Escape") setIsSidebarOpen(false);
     };
 
-    document.addEventListener('keydown', handleEsc);
-    return () => document.removeEventListener('keydown', handleEsc);
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
   const renderMainContent = () => {
     switch (activeId) {
-      case 'principal':
-        const principal = profiles.find((p) => p.id === 'principal');
+      case "principal":
+        const principal = profiles.find((p) => p.id === "principal");
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -191,14 +313,18 @@ const SchoolOfEngineeringQuickLinks = () => {
                   />
                 </motion.div>
                 <div className="text-center">
-                  <h2 className="text-2xl font-bold text-mpgin-darkBlue">{principal?.name}</h2>
-                  <p className="mt-2 text-lg font-semibold text-mpgin-blue">{principal?.title}</p>
+                  <h2 className="text-2xl font-bold text-mpgin-darkBlue">
+                    {principal?.name}
+                  </h2>
+                  <p className="mt-2 text-lg font-semibold text-mpgin-blue">
+                    {principal?.title}
+                  </p>
                 </div>
               </div>
             </div>
           </motion.div>
         );
-      case 'placements':
+      case "placements":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -224,7 +350,7 @@ const SchoolOfEngineeringQuickLinks = () => {
             </motion.div>
           </motion.div>
         );
-      case 'achievements':
+      case "achievements":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -250,7 +376,7 @@ const SchoolOfEngineeringQuickLinks = () => {
             </motion.div>
           </motion.div>
         );
-      case 'nirf':
+      case "nirf":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -276,7 +402,7 @@ const SchoolOfEngineeringQuickLinks = () => {
             </motion.div>
           </motion.div>
         );
-      case 'mandatory-disclosure':
+      case "mandatory-disclosure":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -302,7 +428,7 @@ const SchoolOfEngineeringQuickLinks = () => {
             </motion.div>
           </motion.div>
         );
-      case 'iqac':
+      case "iqac":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -329,7 +455,39 @@ const SchoolOfEngineeringQuickLinks = () => {
           </motion.div>
         );
 
-      case 'swayam-nptel':
+      case "innovationIncubation":
+        const images = [lab1, lab2, lab3, lab4];
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200 p-6 sm:p-8 lg:p-10 w-full"
+          >
+            <motion.h3
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-2xl font-bold text-mpgin-darkBlue mb-5 border-b pb-2 border-gray-300"
+            >
+              {innovationIncubation.title}
+            </motion.h3>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="prose max-w-none font-semibold text-gray-700 whitespace-pre-line"
+            >
+              {renderContent(innovationIncubation.content)}
+              {renderInnovationTable(innovationIncubation.tableData)}
+            </motion.div>
+
+            {/* Display 2 images in a responsive grid */}
+            <ImageGrid images={images} />
+          </motion.div>
+        );
+
+      case "swayam-nptel":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -351,11 +509,12 @@ const SchoolOfEngineeringQuickLinks = () => {
               transition={{ delay: 0.3 }}
               className="prose max-w-none font-semibold text-gray-700 whitespace-pre-line"
             >
-              {renderContent(swayamNptelData.content, swayamNptelData.tableData)}
+              {renderContent(swayamNptelData.content)}
+              {renderNptelTable(swayamNptelData.tableData)}
             </motion.div>
           </motion.div>
         );
-      case 'vision-mission':
+      case "vision-mission":
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -424,7 +583,9 @@ const SchoolOfEngineeringQuickLinks = () => {
       </div>
       <div className="w-full mx-auto flex flex-col lg:flex-row gap-6">
         <aside
-          className={`lg:w-1/4 xl:w-1/5 bg-gray-50 p-4 rounded-lg shadow-md transition-all duration-300 fixed lg:static z-50 lg:z-auto h-full overflow-y-auto ${isSidebarOpen ? 'block inset-0' : 'hidden lg:block'}`}
+          className={`lg:w-1/4 xl:w-1/5 bg-gray-50 p-4 rounded-lg shadow-md transition-all duration-300 fixed lg:static z-50 lg:z-auto h-full overflow-y-auto ${
+            isSidebarOpen ? "block inset-0" : "hidden lg:block"
+          }`}
           ref={sidebarRef}
         >
           <button
@@ -442,19 +603,18 @@ const SchoolOfEngineeringQuickLinks = () => {
                   setActiveId(item.id);
                   setIsSidebarOpen(false);
                 }}
-                className={`block w-full border border-gray-200 text-left py-3 px-4 transition-all duration-200 font-bold text-lg md:text-base ${activeId === item.id
-                    ? 'bg-mpgin-darkBlue text-mpgin-blue underline'
-                    : 'bg-mpgin-blue hover:bg-mpgin-darkBlue hover:text-white text-mpgin-darkBlue'
-                  }`}
+                className={`block w-full border border-gray-200 text-left py-3 px-4 transition-all duration-200 font-bold text-lg md:text-base ${
+                  activeId === item.id
+                    ? "bg-mpgin-darkBlue text-mpgin-blue underline"
+                    : "bg-mpgin-blue hover:bg-mpgin-darkBlue hover:text-white text-mpgin-darkBlue"
+                }`}
               >
                 {item.label}
               </motion.button>
             ))}
           </nav>
         </aside>
-        <main className="flex-1 lg:w-2/4 xl:w-3/5">
-          {renderMainContent()}
-        </main>
+        <main className="flex-1 lg:w-2/4 xl:w-3/5">{renderMainContent()}</main>
         <aside className="lg:w-1/4 xl:w-1/5">
           <div className="sticky top-44">
             <NotificationComponent />
