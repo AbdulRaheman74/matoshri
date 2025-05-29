@@ -7,6 +7,7 @@ import managementDean from "../assets/principalImages/DeanSadanand R. Shinde Sch
 import civilHodEngineering from "../assets/hodImages/P. D. Pople Civil Engineering.png";
 import polyComputerHod from "../assets/hodImages/Mrs MORE M.K.png";
 import polyCivilHod from "../assets/hodImages/Ms. Goud P.O Hod.png";
+import mechanicalHodPoly from "../assets/principalImages/Prof. Shahaji Deshmukh Vishwabharati polytechnic.jpg"
 
 export interface Department {
   id: string;
@@ -62,7 +63,9 @@ export const colleges: College[] = [
           "CNC Technology",
           "Mechatronics Fundamentals",
         ],
-        about: ``,
+        about: `The Department of Mechanical Engineering at Vishwabharti Polytechnic Institute is a cornerstone of our technical education offerings, known for its strong foundation in engineering principles and hands-on practical training. Our goal is to develop competent, innovative, and ethical mechanical engineers ready to meet the challenges of modern industry.
+
+We offer a comprehensive Diploma in Mechanical Engineering, designed to equip students with in-depth knowledge of core subjects such as thermodynamics, manufacturing technology, fluid mechanics, machine design, and CAD/CAM. Our curriculum is regularly updated to keep pace with technological advancements and industry demands`,
 
         facilities: [
           "2000+ sq.ft Automotive Workshop",
@@ -79,14 +82,25 @@ export const colleges: College[] = [
         ],
 
         hod: {
-          name: "HOD",
+          name: "Prof. Shahaji Deshmukh",
           designation: "Head of Department - Mechanical Engineering",
-          message: "",
-          profileImage:
-            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+          message: `It gives me immense pleasure to extend a warm welcome to all students, parents, and visitors exploring our vibrant institution. At Vishwabharti Polytechnic Institute, we are committed to shaping the future of young minds thro
+          ugh technical education that blends knowledge, skill, and character.
+
+Our polytechnic college stands as a beacon of excellence, offering industry-relevant diploma programs designed to meet the evolving needs of the modern world. With a team of dedicated faculty, state-of-the-art infrastructure, and a student-centered approach, we nurture innovation, creativity, and critical thinking among our learners.
+
+
+
+We believe in holistic development — not just academic excellence but also personality building, leadership qualities, and ethical values. Our graduates are known for their professionalism, adaptability, and hands-on skills in real-world scenarios.
+`,
+          profileImage: mechanicalHodPoly,
         },
-        vision: "",
-        mission: "",
+        vision: "To be a leading polytechnic institute recognized for producing skilled, innovative, and ethical professionals who contribute meaningfully to societal progress and global development.",
+        mission: `To deliver industry-relevant technical education that integrates knowledge, practical skills, and strong moral values.
+
+To foster a learning environment that encourages innovation, creativity, and critical thinking.
+
+To equip students with the competencies needed to excel in their careers and adapt to evolving technological landscapes.`,
       },
       {
         id: "civil",
@@ -145,8 +159,7 @@ I invite you to explore our programs, visit our campus, and join us in building 
 better tomorrow through civil engineering.
 “Civil engineering is the art of directing the great sources of power in nature for
 the use and convenience of man.”`,
-          profileImage:
-            polyCivilHod,
+          profileImage: polyCivilHod,
         },
         vision: `The Civil Engineering Department imparts quality education to up bring technical
 manpower in the field of civil engineering with the capabilities to take challenges
